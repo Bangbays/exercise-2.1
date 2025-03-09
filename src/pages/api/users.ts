@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const response = await axios.post("http://localhost:5000/users", req.body);
                 res.status(201).json(response.data);
             } catch (error) {
-                res.status(500).json({ error: "Failed to create user" }):
+                res.status(500).json({ error: "Failed to create user" });
             }
             break;
         default:
