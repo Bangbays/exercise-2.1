@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "87c2",
+      "name": "Budianto",
+      "email": "budianto@gmail.com",
+      "password": "Budi*12345"
+    }
+  ],
+  "posts": [
+    {
+      "id": "a2f4",
+      "content": "ubur-ubur ikan lele\nakhirnya berhasil le~",
+      "createdAt": "2025-03-08T20:07:03.670Z"
+    },
+    {
+      "id": "0697",
+      "content": "",
+      "createdAt": "2025-03-08T20:07:30.862Z"
+    }
+  ]
+}
