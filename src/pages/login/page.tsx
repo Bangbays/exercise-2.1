@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "@/lib/authSlicets";
+import dynamic from "next/dynamic";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -85,4 +86,5 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+const Login = dynamic(() => Promise.resolve(LoginPage), { ssr: false });
+export default Login;
