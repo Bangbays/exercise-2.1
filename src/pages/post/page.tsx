@@ -1,25 +1,25 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/lib/store";
 import PostList from "../postList/page";
 
-const PostsPageComponent = () => {
+const PostsPage = () => {
   const email = useSelector((state: RootState) => state.user.email);
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     if (!email) {
       router.push("/login");
     }
   }, [email, router]);
 
-  if (!email) {
-    return <div>Loading...</div>;
-  }
+  if (!isClient || !email) return <div>Loading...</div>;
 
   return (
     <div>
@@ -27,9 +27,5 @@ const PostsPageComponent = () => {
     </div>
   );
 };
-
-const PostsPage = dynamic(() => Promise.resolve(PostsPageComponent), {
-  ssr: false,
-});
 
 export default PostsPage;

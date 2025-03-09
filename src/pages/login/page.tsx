@@ -5,10 +5,15 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "@/lib/authSlicets";
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const validationSchema = Yup.object({
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -32,6 +37,8 @@ const LoginPage = () => {
       alert("Login failed!");
     }
   };
+
+  if (!isClient) return null;
 
   return (
     <div className="container mx-auto mt-20">
@@ -86,5 +93,4 @@ const LoginPage = () => {
   );
 };
 
-const Login = dynamic(() => Promise.resolve(LoginPage), { ssr: false });
-export default Login;
+export default LoginPage;
